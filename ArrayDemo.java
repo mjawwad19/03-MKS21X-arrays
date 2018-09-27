@@ -18,7 +18,7 @@ public class ArrayDemo {
     for (row = 0; row < ary.length; row++){
       for (column = 0; column < ary[row].length; column ++) {
         if (column == 0) {
-          System.out.print("[");
+          arry += "[";
         }
         if (column != ary[row].length - 1) {
           arry += ary[row][column] + ", ";
