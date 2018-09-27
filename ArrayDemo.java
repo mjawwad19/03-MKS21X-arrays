@@ -26,14 +26,25 @@ public class ArrayDemo {
       }
     System.out.print(arry);
   }
-
+//1. Calculate and return how many zeros are in the parameter
+//(a rectangular 2D array of integers)
+public static int countZeros2D(int[][] nums){
+  int count = 0;
+  for (int row = 0; row < nums.length; row++){
+    for (int column = 0; column < nums[row].length; column ++) {
+      if (nums[row][column] == 0) {count ++;}
+    }
+  }
+  return count;
+}
   public static void main(String[] args) {
     int [] test1 = {100,3952,34,1,6};
-    int [][] test2 = {{100,3952},
-                     {34,1},
-                     {6}};
+    int [][] test2 = {{100,3952},{34,1},{6}};
+    int [][] test3 = {{0,0,2,0},{32,0},{4}};
     printArray(test1);
     System.out.print("\n");
     printArray(test2);
+    System.out.print("\n");
+    System.out.print(countZeros2D(test3));
   }
 }
