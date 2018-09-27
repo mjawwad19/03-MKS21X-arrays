@@ -5,8 +5,12 @@ public class ArrayDemo {
       if (i != ary.length - 1) {
         arry += ary[i] + ", ";
       }
-      else {arry += ary[i]};
+      else {arry += ary[i];};
     }
     System.out.print("["+arry + "]");
+  }
+  public static void main(String[] args) {
+    int [] test1 = {100,3952,34,1,6};
+    printArray(test1);
   }
 }
