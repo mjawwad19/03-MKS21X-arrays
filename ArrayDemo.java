@@ -13,15 +13,16 @@ public class ArrayDemo {
 // 0b. Make a function to print a 2d array of ints.
   public static void printArray(int[][]ary){
     String arry = "";
-    int row;
-    int column;
-    for (row = 0; row < ary.length; row++){
-      for (column = 0; column < ary[row].length; column ++) {
-        if (column == 0) {arry += "[";}
-        if (column != ary[row].length - 1) {arry += ary[row][column] + ", ";}
-        else {arry += ary[row][column] + "]";}
+    int i;
+    int j;
+    for (i = 0; i < ary.length; i++){
+      if (i == 0) {arry += "[";}
+      for (j = 0; j < ary[i].length; j ++) {
+        if (j == 0) {arry += "[";}
+        if (j != ary[i].length - 1) {arry += ary[i][j] + ", ";}
+        else {arry += ary[i][j] + "]";}
       }
-        if (row != ary.length - 1) {arry += ", ";}
+        if (i != ary.length - 1) {arry += ", ";}
         else {arry += "]";}
       }
     System.out.print(arry);
@@ -30,24 +31,24 @@ public class ArrayDemo {
 //(a rectangular 2D array of integers)
 public static int countZeros2D(int[][] nums){
   int count = 0;
-  for (int row = 0; row < nums.length; row++){
-    for (int column = 0; column < nums[row].length; column ++) {
-      if (nums[row][column] == 0) {count ++;}
+  for (int i = 0; i < nums.length; i++){
+    for (int j = 0; j < nums[i].length; j ++) {
+      if (nums[i][j] == 0) {count ++;}
     }
   }
   return count;
 }
 /*2a. Modify a given 2D array of integer as follows:
 Fill the of integers with 1's
-EXCEPT when the row number is the same as the column number:
+EXCEPT when the i number is the same as the j number:
 
 you must fill those with 3's instead.
 */
 public static void fill2D(int[][] vals){
-  for (int row = 0; row < vals.length; row++){
-    for (int column = 0; column < vals[row].length; column ++) {
-      if (row == column) {vals[row][column] = 3;}
-      else {vals[row][column] = 1;}
+  for (int i = 0; i < vals.length; i++){
+    for (int j = 0; j < vals[i].length; j ++) {
+      if (i == j) {vals[i][j] = 3;}
+      else {vals[i][j] = 1;}
     }
   }
   printArray(vals);
@@ -56,29 +57,32 @@ public static void fill2D(int[][] vals){
 Fill that array with with 1's, except where the value of the original array is negative:
 you must fill those with 3's instead.
 
-//You may NOT modify the parameter vals.
-*/
+You may NOT modify the parameter vals.*/
 public static int[][] fill2DCopy(int[][] vals){
-  int[][] valsCopy = new int[vals.length][vals[vals.length -1].length];
-  for (int row = 0; row < vals.length; row++){
-    for (int column = 0; column < vals[row].length; column ++) {
-      if (vals[row][column] >= 0) {valsCopy[row][column] = 1;}
-      else {valsCopy[row][column] = 3;}
+  int len = vals.length;
+  int [][] valsCopy = new int [len][];
+  for (int i = 0; i < len; i++) {
+    valsCopy[i] = new int[vals[i].length];
+    for (int j = 0; j < vals[i].length; j++) {
+      valsCopy[i][j] = vals[i][j];
+      if ((valsCopy[i][j]) < 0) {valsCopy[i][j] = 3;}
+      else {valsCopy[i][j] = 1;}
     }
   }
   return valsCopy;
 }
+
   public static void main(String[] args) {
     int [] test1 = {100,3952,34,1,6};
-    //int [][] test2 = {{100,3952},{34,1},{6}};
-    int [][] test3 = {{0,0,-2,0},{32,0},{-4}};
+    int [][] test2 = {{0,0,-2,0},{32,0},{-4}};
+    int [][] test3 = {{-104,0,-6,3},{32,-1},{-4}};
+
     printArray(test1);
     System.out.print("\n");
-    printArray(test3);
+    printArray(test2);
+    System.out.println(countZeros2D(test2));
     System.out.print("\n");
-    System.out.print(countZeros2D(test3));
-    System.out.print("\n");
-    fill2D(test3);
+    fill2D(test2);
     System.out.print("\n");
     printArray(fill2DCopy(test3));
   }
