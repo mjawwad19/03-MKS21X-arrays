@@ -52,16 +52,34 @@ public static void fill2D(int[][] vals){
   }
   printArray(vals);
 }
+/*2b. Make a new 2d array the same dimensions as the given parameter.
+Fill that array with with 1's, except where the value of the original array is negative:
+you must fill those with 3's instead.
+
+//You may NOT modify the parameter vals.
+*/
+public static int[][] fill2DCopy(int[][] vals){
+  int[][] valsCopy = new int[vals.length][vals[vals.length -1].length];
+  for (int row = 0; row < vals.length; row++){
+    for (int column = 0; column < vals[row].length; column ++) {
+      if (vals[row][column] >= 0) {valsCopy[row][column] = 1;}
+      else {valsCopy[row][column] = 3;}
+    }
+  }
+  return valsCopy;
+}
   public static void main(String[] args) {
     int [] test1 = {100,3952,34,1,6};
-    int [][] test2 = {{100,3952},{34,1},{6}};
-    int [][] test3 = {{0,0,2,0},{32,0},{4}};
+    //int [][] test2 = {{100,3952},{34,1},{6}};
+    int [][] test3 = {{0,0,-2,0},{32,0},{-4}};
     printArray(test1);
     System.out.print("\n");
-    printArray(test2);
+    printArray(test3);
     System.out.print("\n");
     System.out.print(countZeros2D(test3));
     System.out.print("\n");
     fill2D(test3);
+    System.out.print("\n");
+    printArray(fill2DCopy(test3));
   }
 }
