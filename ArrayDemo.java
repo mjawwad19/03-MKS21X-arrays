@@ -17,16 +17,13 @@ public class ArrayDemo {
     int column;
     for (row = 0; row < ary.length; row++){
       for (column = 0; column < ary[row].length; column ++) {
-        if (column == 0) {
-          arry += "[";
-        }
-        if (column != ary[row].length - 1) {
-          arry += ary[row][column] + ", ";
-        }
-        else {
-          arry += ary[row][column] + "]";
-        }}
-        arry += ", "; }
+        if (column == 0) {arry += "[";}
+        if (column != ary[row].length - 1) {arry += ary[row][column] + ", ";}
+        else {arry += ary[row][column] + "]";}
+      }
+        if (row != ary.length - 1) {arry += ", ";}
+        else {arry += "]";}
+      }
     System.out.print(arry);
   }
 
