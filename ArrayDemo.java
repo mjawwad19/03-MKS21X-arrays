@@ -37,6 +37,21 @@ public static int countZeros2D(int[][] nums){
   }
   return count;
 }
+/*2a. Modify a given 2D array of integer as follows:
+Fill the of integers with 1's
+EXCEPT when the row number is the same as the column number:
+
+you must fill those with 3's instead.
+*/
+public static void fill2D(int[][] vals){
+  for (int row = 0; row < vals.length; row++){
+    for (int column = 0; column < vals[row].length; column ++) {
+      if (row == column) {vals[row][column] = 3;}
+      else {vals[row][column] = 1;}
+    }
+  }
+  printArray(vals);
+}
   public static void main(String[] args) {
     int [] test1 = {100,3952,34,1,6};
     int [][] test2 = {{100,3952},{34,1},{6}};
@@ -46,5 +61,7 @@ public static int countZeros2D(int[][] nums){
     printArray(test2);
     System.out.print("\n");
     System.out.print(countZeros2D(test3));
+    System.out.print("\n");
+    fill2D(test3);
   }
 }
